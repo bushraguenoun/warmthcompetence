@@ -38,7 +38,7 @@
 #'@export
 warmth <- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   if(is.null(ID)){
-    ID=as.character(1:length(text))
+    ID=as.character(seq_along(text))
   }
   else {
     ID <- as.character(ID)
@@ -54,9 +54,9 @@ warmth <- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   df <- data.frame(text, ID)
   df$WC <- apply(df %>% dplyr::select(text), 1, ngram::wordcount)
   tbl <- tibble::as_tibble(
-    data.frame(doc_id = ID, text = text, stringsAsFactors = F)
+    data.frame(doc_id = ID, text = text, stringsAsFactors = FALSE)
   )
-  try <- spacyr::spacy_parse(tbl, tag = TRUE, dependency = TRUE, nounphrase = TRUE,entity=FALSE)
+  try <- spacyr::spacy_parse(tbl, tag = TRUE, dependency = TRUE, nounphrase = TRUE, entity=FALSE)
   tidy_norms_clean <- words_clean(text, ID)
 
   df_corpus <- quanteda::corpus(df$text, docnames = df$ID)
@@ -66,15 +66,16 @@ warmth <- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   tidy_norms_clean$Warmth_words <- 0
   tidy_norms_clean$finance_words <- 0
   tidy_norms_clean$strong_words <- 0
-  for (i in 1:nrow(tidy_norms_clean)) {
+  for (i in seq_len(nrow(tidy_norms_clean))) {
     if (tolower(tidy_norms_clean$word[i]) %in% Courage_words$WORDS)
-      tidy_norms_clean$Courage_words[i] =  1
+      tidy_norms_clean$Courage_words[i] <-  1
     if (tolower(tidy_norms_clean$word[i]) %in% Warmth_words$WORDS)
-      tidy_norms_clean$Warmth_words[i] =  1
+      tidy_norms_clean$Warmth_words[i] <- 1
     if (tolower(tidy_norms_clean$word[i]) %in% finance_words$WORDS)
-      tidy_norms_clean$finance_words[i] =  1
+      tidy_norms_clean$finance_words[i] <- 1
     if (tolower(tidy_norms_clean$word[i]) %in% qdapDictionaries::strong.words)
-      tidy_norms_clean$strong_words[i] =  1}
+      tidy_norms_clean$strong_words[i] <- 1
+  }
   tidy_words_scores <- plyr::ddply(tidy_norms_clean,.(ID),plyr::summarize,
                                    Courage_words = sum(Courage_words, na.rm = TRUE),
                                    Warmth_words = sum(Warmth_words, na.rm = TRUE),
@@ -91,17 +92,17 @@ warmth <- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   df$employ_words <- 0
   df$social_words <- 0
   df$mental_verbs <- 0
-  for (i in 1:nrow(df)) {
-    for (j in 1:length(explore_words$WORDS)) {
+  for (i in seq_along(df)) {
+    for (j in seq_along(explore_words$WORDS)) {
       if (grepl(explore_words$WORDS[j], tolower(df$text[i]), ignore.case = TRUE, perl = TRUE))
       {(df$explore_words[i] <- df$explore_words[i] + 1)}}
-    for (f in 1:length(employ_words$WORDS)) {
+    for (f in seq_along(employ_words$WORDS)) {
       if (grepl(employ_words$WORDS[f], tolower(df$text[i]), ignore.case = TRUE, perl = TRUE))
       {(df$employ_words[i] <- df$employ_words[i] + 1)}}
-    for (j in 1:length(social_words$WORDS)) {
+    for (j in seq_along(social_words$WORDS)) {
       if (grepl(social_words$WORDS[j], tolower(df$text[i]), perl = TRUE, ignore.case = TRUE))
         (df$social_words[i] <- df$social_words[i] + 1)}
-    for (j in 1:length(mental_verbs$WORDS)) {
+    for (j in seq_along(mental_verbs$WORDS)) {
       if (grepl(mental_verbs$WORDS[j], tolower(df$text[i]), ignore.case = TRUE, perl = TRUE))
       {(df$mental_verbs[i] <- df$mental_verbs[i] + 1)}
     }}
@@ -123,18 +124,18 @@ warmth <- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   ##Discourse Markers
   polysemic <- qdapDictionaries::discourse.markers.alemany$marker[which(qdapDictionaries::discourse.markers.alemany$type == "polysemic")]
   tidy_norms_clean$polysemic <- 0
-  for (i in 1:nrow(tidy_norms_clean)) {
+  for (i in seq_along(tidy_norms_clean)) {
     if (tidy_norms_clean$word[i] %in% polysemic)
-    {tidy_norms_clean$polysemic[i] =  1}
+    {tidy_norms_clean$polysemic[i] <- 1}
   }
   discourse_scores <- plyr::ddply(tidy_norms_clean,.(ID),plyr::summarize,
                                   polysemic = sum(polysemic, na.rm = TRUE))
   ref <- as.data.frame(df$ID)
   names(ref)[names(ref) == 'df$ID'] <- 'ID'
   ref$polysemic2 <- 0
-  for (j in 1:length(polysemic)) {
+  for (j in seq_along(polysemic)) {
     if (sapply(strsplit(polysemic[j], "\\s+"), length) > 1) {
-      for (i in 1:nrow(df)) {
+      for (i in seq_along(df)) {
         if (grepl(polysemic[j], tolower(df$text[i]), ignore.case = TRUE))
         {(ref$polysemic2[i] <- ref$polysemic2[i] + 1)}
       }
@@ -166,7 +167,7 @@ warmth <- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   df$Hello.x <- if (!is.null(df_politeness$Hello)) {df$Hello <- df_politeness$Hello} else {df$Hello <- 0}
 
   #sentence level spacy features
-  suppressWarnings(spacy_new2A <- plyr::ddply(try, .(doc_id, sentence_id), dplyr::summarise,
+  suppressWarnings(spacy_new2A <- plyr::ddply(try, .(.data$doc_id, sentence_id), dplyr::summarise,
                                               pre_UH_adv2_subj = (length(token_id[tag == 'UH' & token_id < token_id[dep_rel == "nsubj"]])/ length(token_id)),
                                               post_PRP_adv1_subj = (length(token_id[tag == 'PRP' & token_id > token_id[dep_rel == "nsubj"]])/ length(token_id[tag == 'PRP'])),
                                               post_adj1_ROOT = (length(token_id[pos == 'ADJ' & token_id > token_id[dep_rel == "ROOT"]])/ length(token_id[pos == 'ADJ'])),
@@ -175,13 +176,13 @@ warmth <- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   ))
   options(dplyr.summarise.inform = FALSE)
   spacy_new2B <- spacy_new2A %>%
-    dplyr::group_by(doc_id) %>%
-    dplyr::summarise(dplyr::across(pre_UH_adv2_subj:VB_VERB, mean, na.rm = T))
+    dplyr::group_by(.data$doc_id) %>%
+    dplyr::summarise(dplyr::across(pre_UH_adv2_subj:VB_VERB, mean, na.rm = TRUE))
   df$ID <- as.character(df$ID)
   df <- dplyr::left_join(df, spacy_new2B, by = c("ID" = "doc_id"))
 
   #message level spacy features
-  spacy_counts2 <- plyr::ddply(try, .(doc_id), plyr::summarise,
+  spacy_counts2 <- plyr::ddply(try, .(.data$doc_id), plyr::summarise,
                                poss = sum(dep_rel == 'poss'),
                                VBG = sum(tag == 'VBG'))
   df <- dplyr::left_join(df, spacy_counts2, by = c("ID" = "doc_id"))

@@ -22,8 +22,12 @@ Warmth and competence are the two main dimensions of social perception and judge
 
 This package has yet to be submitted to the Comprehensive R Archive Network (Hornik, 2021), so it is currently only available through Github. To install the package, use the following code in your R session:
 
-```{r gh-installation, eval = TRUE, message = FALSE}
+```{r, eval=F}
 devtools::install_github("bushraguenoun/warmthcompetence")
+```
+
+
+```{r gh-installation, eval = TRUE, message = FALSE}
 library("warmthcompetence")
 spacyr::spacy_initialize()
 ```
