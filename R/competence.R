@@ -54,18 +54,12 @@ competence<- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   df <- data.frame(text, ID)
   df$WC <- apply(df %>% dplyr::select(text), 1, ngram::wordcount)
   tbl <- tibble::as_tibble(
-    data.frame(doc_id = ID, text = text, stringsAsFactors = F)
+    data.frame(.data$doc_id = ID, text = text, stringsAsFactors = FALSE)
   )
   try <- spacyr::spacy_parse(tbl, tag = TRUE, dependency = TRUE, nounphrase = TRUE,entity=FALSE)
   tidy_norms_clean <- words_clean(text, ID)
   df_corpus <- quanteda::corpus(df$text, docnames = df$ID)
-  df_dfm <- quanteda::dfm(
-    quanteda::tokens(df_corpus),
-    tolower = TRUE,
-    select = NULL,
-    remove = NULL,
-    dictionary = NULL,
-    thesaurus = NULL)
+  df_dfm <- quanteda::dfm(tokens(df_corpus))
 
 
   #politeness
@@ -106,7 +100,7 @@ competence<- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   df$forward_words <- df$forward_words/ df$WC
 
   #message level spacy features
-  spacy_counts2 <- plyr::ddply(try, .(doc_id), plyr::summarize,
+  spacy_counts2 <- plyr::ddply(try, .(.data$doc_id), plyr::summarize,
                                advmod = sum(dep_rel == 'advmod'),
                                punct = sum(dep_rel == 'punct'),
                                TO = sum(tag == 'TO'),
@@ -126,14 +120,14 @@ competence<- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   df$ROOT <- df$ROOT / df$WC
 
   #sentence level spacy features
-  suppressWarnings(spacy_new2A <- plyr::ddply(try, .(doc_id, sentence_id), plyr::summarize,
+  suppressWarnings(spacy_new2A <- plyr::ddply(try, .(.data$doc_id, sentence_id), plyr::summarize,
                                               post_JJS_ADJ2_subj = (length(token_id[tag == 'JJS' & token_id > token_id[dep_rel == "nsubj"]])/ length(token_id)),
                                               pre_NOUN2_ROOT = (length(token_id[pos == 'NOUN' & token_id < token_id[dep_rel == "ROOT"]])/ length(token_id))
   ))
   options(dplyr.summarise.inform = FALSE)
   spacy_new2B <- spacy_new2A %>%
-    dplyr::group_by(doc_id) %>%
-    dplyr::summarise(dplyr::across(post_JJS_ADJ2_subj:pre_NOUN2_ROOT, mean, na.rm = T))
+    dplyr::group_by(.data$doc_id) %>%
+    dplyr::summarise(dplyr::across(post_JJS_ADJ2_subj:pre_NOUN2_ROOT, mean, na.rm = TRUE))
   df <- dplyr::left_join(df, spacy_new2B, by = c("ID" = "doc_id"))
 
   ##Competence Codings
@@ -184,7 +178,7 @@ competence<- function(text, ID=NULL, metrics = c("scores", "features", "all")){
   tidy_norms_clean$vague <- 0
   for (i in 1:nrow(tidy_norms_clean)) {
     if (tidy_norms_clean$word[i] %in% vague)
-    {tidy_norms_clean$vague[i] =  1}
+    {tidy_norms_clean$vague[i] <- 1}
   }
   discourse_scores <- plyr::ddply(tidy_norms_clean,.(ID),plyr::summarize,
                                   vague = sum(vague, na.rm = TRUE))
