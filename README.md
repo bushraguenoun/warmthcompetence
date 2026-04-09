@@ -1,6 +1,14 @@
 # Warmthcompetence R Package
 Warmth and competence are the two main dimensions of social perception and judgment (Cuddy, Fiske & Glick, 2008). When individuals introduce or describe themselves, their audiences automatically make judgments about their warmth and competence. In this package, we provide tools that estimate warmth and competence social perceptions from natural self-presentational language. 
 
+## Citation
+
+To generate a bibliographic reference for the package, run:
+
+```r
+citation("warmthcompetence")
+```
+
 ## Installation
 
 This package has yet to be submitted to the Comprehensive R Archive Network (Hornik, 2021), so it is currently only available through Github. To install the package, use the following code in your R session:
