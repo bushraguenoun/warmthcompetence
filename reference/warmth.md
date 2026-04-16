@@ -1,0 +1,95 @@
+# Competence Detector
+
+Assesses warmth and competence perceptions in self-presentational
+natural language. These functions each take an N-length vector of
+self-presentational text documents and N-length vector of document IDs
+and return a warmth/competence perception score that represents how much
+warmth/competence others attribute the individual who wrote the
+self-presentational text. The function also contains a metrics argument
+that enables users to also return the raw features used to assess warmth
+and competence perceptions.
+
+## Usage
+
+``` r
+competence(text, ID = NULL, metrics = "scores")
+
+warmth(text, ID = NULL, metrics = "scores")
+```
+
+## Arguments
+
+- text:
+
+  `character`; a vector of texts, each of which will be assessed for
+  warmth/competence.
+
+- ID:
+
+  `character`; a vector of IDs that will be used to identify the
+  warmth/competence scores.
+
+- metrics:
+
+  `character`; an argument that allows users to decide what metrics to
+  return. Users can return the warmth/competence scores
+  (`metrics = "scores"`), the features that underlie the
+  warmth/competence scores (`metrics = "features"`), or both the
+  warmth/competence scores and the features (`metrics = "all"`). The
+  default is to return the warmth/competence scores.
+
+## Value
+
+The default is to return a data frame with each row containing the
+document identifier and the warmth/competence score. Users can also
+customize what is returned through the `metrics` argument. If
+`metrics = "features"`, then a data frame of warmth/competence features
+will be returned where each document is represented by a row. If
+`metrics = "all"`, then both the warmth/competence scores and features
+will be returned in a data frame.
+
+## Details
+
+Some features depend on Spacyr which must be installed separately in
+Python.
+
+## References
+
+Benoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., &
+Matsuo, A. (2018). quanteda: An R package for the quantitative analysis
+of textual data. *Journal of Open Source Software*, 3(30), 774.
+[doi:10.21105/joss.00774](https://doi.org/10.21105/joss.00774)
+
+Buchanan, E. M., Valentine, K. D., & Maxwell, N. (2018). The LAB:
+Linguistic Annotated Bibliography.
+[doi:0.31219/osf.io/h3bwx](https://doi.org/0.31219/osf.io/h3bwx)
+
+Rinker, T. W. (2018). lexicon: Lexicon Data version 1.2.1.
+<http://github.com/trinker/lexicon>
+
+Rinker, T. W. (2021). sentimentr: Calculate Text Polarity Sentiment
+version 2.9.0. <http://github.com/trinker/sentimentr>
+
+Yeomans, M., Kantor, A., & Tingley, D. (2019). The politeness Package:
+Detecting Politeness in Natural Language. *The R Journal*, 10(2), 489.
+[doi:10.32614/RJ-2018-079](https://doi.org/10.32614/RJ-2018-079)
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+data("example_data")
+
+warmth_scores <- warmth(example_data$bio, metrics = "all")
+
+example_data$warmth_predictions <- warmth_scores$warmth_predictions
+warmth_model1 <- lm(RA_warm_AVG  ~ warmth_predictions, data = example_data)
+summary(warmth_model1)
+
+competence_scores <- competence(example_data$bio, metrics = "all")
+
+example_data$competence_predictions <- competence_scores$competence_predictions
+competence_model1 <- lm(RA_comp_AVG ~ competence_predictions, data = example_data)
+summary(competence_model1)
+} # }
+```
