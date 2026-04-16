@@ -5,3 +5,7 @@
 ^paper$
 ^LICENSE\.md$
 ^\.DS_Store$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
