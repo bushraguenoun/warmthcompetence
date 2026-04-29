@@ -12,14 +12,6 @@ competence social perceptions from natural self-presentational language.
 We use pre-trained enet regression models to provide numerical
 representations of warmth and competence perceptions.
 
-## Citing warmthcompetence
-
-To generate a citation for *warmthcompetence*, please run
-
-``` r
-citation("warmthcompetence")
-```
-
 ## Citation
 
 To generate a bibliographic reference for the package, run:
