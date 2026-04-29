@@ -51,27 +51,20 @@
 </h1></div>
 <p>Warmth and competence are the two main dimensions of social perception and judgment (<a href="#ref-cuddy2008">Cuddy, Fiske, and Glick 2008</a>) . When individuals introduce or describe themselves, their audiences automatically make judgments about their warmth and competence. In the <em>warmthcompetence</em> package, we provide tools that estimate warmth and competence social perceptions from natural self-presentational language. We use pre-trained enet regression models to provide numerical representations of warmth and competence perceptions.</p>
 <div class="section level2">
-<h2 id="citing-warmthcompetence">Citing warmthcompetence<a class="anchor" aria-label="anchor" href="#citing-warmthcompetence"></a>
-</h2>
-<p>To generate a citation for <em>warmthcompetence</em>, please run</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"warmthcompetence"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To generate a bibliographic reference for the package, run:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"warmthcompetence"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>To install <em>warmthcompetence</em> from CRAN, use the following code in your R session:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"warmthcompetence"</span><span class="op">)</span></span></code></pre></div>
 <p>To install the development version from GitHub, use the following code:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"bushraguenoun/warmthcompetence"</span><span class="op">)</span></span></code></pre></div>
 <p>Note that some features depend on <em>spacyr</em> which must be installed separately through Python. To install <em>spacyr</em>, follow the instructions <a href="https://www.rdocumentation.org/packages/spacyr/" class="external-link">here</a>.</p>
 </div>
@@ -79,7 +72,7 @@
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p><em>warmthcompetence</em> contains two main functions: <code><a href="reference/warmth.html">warmth()</a></code> and <code><a href="reference/warmth.html">competence()</a></code>. These functions can be used as described below:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">competence_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/warmth.html">competence</a></span><span class="op">(</span><span class="va">text_vector</span>, <span class="va">ID_vector</span>, metrics <span class="op">=</span> <span class="st">"scores"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">warmth_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/warmth.html">warmth</a></span><span class="op">(</span><span class="va">text_vector</span>, <span class="va">ID_vector</span>, metrics <span class="op">=</span> <span class="st">"scores"</span><span class="op">)</span></span></code></pre></div>
