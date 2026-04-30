@@ -3,13 +3,13 @@
 ## Warmth and Competence
 
 Warmth and competence are the two main dimensions of social perception
-and judgment ([Cuddy, Fiske, and Glick 2008](#ref-cuddy2008)) . When
-individuals introduce or describe themselves, their audiences
-automatically make judgments about their warmth and competence. In the
-*warmthcompetence* package, we provide tools that estimate warmth and
-competence social perceptions from natural self-presentational language.
-We use pre-trained enet regression models to provide numerical
-representations of warmth and competence perceptions.
+and judgment ([Cuddy et al. 2008](#ref-cuddy2008)) . When individuals
+introduce or describe themselves, their audiences automatically make
+judgments about their warmth and competence. In the *warmthcompetence*
+package, we provide tools that estimate warmth and competence social
+perceptions from natural self-presentational language. We use
+pre-trained enet regression models to provide numerical representations
+of warmth and competence perceptions.
 
 ### Installation
 
@@ -17,18 +17,21 @@ To install *warmthcompetence* from CRAN, use the following code in your
 R session:
 
 ``` r
+
 install.packages("warmthcompetence")
 ```
 
 To install the development version from GitHub, use the following code:
 
 ``` r
+
 devtools::install_github("bushraguenoun/warmthcompetence")
 ```
 
 First, we load the package into our environment.
 
 ``` r
+
 library("warmthcompetence")
 ```
 
@@ -38,6 +41,7 @@ separately through Python. To install *spacyr*, follow the instructions
 code below:
 
 ``` r
+
 spacyr::spacy_initialize()
 ```
 
@@ -50,6 +54,7 @@ and
 These functions can be used as described below:
 
 ``` r
+
 competence_scores <- competence(text_vector, ID_vector, metrics = "scores")
 
 warmth_scores <- warmth(text_vector, ID_vector, metrics = "scores")
@@ -84,13 +89,13 @@ study. The columns of this data frame are the following:
   competence).
 - `RA_warm_AVG`: the average perceptions of warmth for each participant
   introduction on a scale of 1 (extremely low warmth) to 10 (extremely
-  high warmth) across three independent judges ($\alpha = 0.76$). The
+  high warmth) across three independent judges ($`\alpha = 0.76`$). The
   individual RA ratings are in the following columns: `warm_1`,
   `warm_2`, and `warm_3`
 - `RA_comp_AVG`: the average perceptions of warmth for each participant
   introduction on a scale of 1 (extremely low competence) to 10
   (extremely high competence) across three independent judges
-  ($\alpha = 0.79$). The individual RA ratings are in the following
+  ($`\alpha = 0.79`$). The individual RA ratings are in the following
   columns: `comp_1`, `comp_2`, and `comp_3`
 
 #### Predicting Warmth Perceptions
@@ -101,6 +106,7 @@ independent judges?
 First we run the functions on the study data.
 
 ``` r
+
 data("vignette_data")
 
 # Generate competence scores
@@ -122,6 +128,7 @@ Then, we explore whether the warmth model predicts the warmth ratings of
 the independent judges.
 
 ``` r
+
 warmth_model <- lm(RA_warm_AVG ~ warmth_predictions,
                    data = all_data)
 
@@ -155,6 +162,7 @@ Can our competence model predict the average competence ratings of the
 independent judges?
 
 ``` r
+
 competence_model <- lm(RA_comp_AVG ~ competence_predictions,
                        data = all_data)
 
@@ -188,6 +196,7 @@ Are model predictions of competence higher for the participants asked to
 present themselves as a competent person compared to a warm person?
 
 ``` r
+
 t.test(competence_predictions ~ condition, data = all_data)
 #> 
 #>  Welch Two Sample t-test
@@ -210,6 +219,7 @@ Now, are model predictions of warmth higher for the participants asked
 to present themselves as a warm person compared to a competent person?
 
 ``` r
+
 t.test(warmth_predictions ~ condition, data = all_data)
 #> 
 #>  Welch Two Sample t-test
@@ -240,5 +250,5 @@ questions, or concerns!
 Cuddy, Amy J. C., Susan T. Fiske, and Peter Glick. 2008. “Warmth and
 Competence as Universal Dimensions of Social Perception: The Stereotype
 Content Model and the BIAS Map.” In *Advances in Experimental Social
-Psychology*, 40:61–149. Elsevier.
+Psychology*, vol. 40. Elsevier.
 <https://doi.org/10.1016/S0065-2601(07)00002-0>.

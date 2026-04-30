@@ -64,10 +64,9 @@ Buchanan, E. M., Valentine, K. D., & Maxwell, N. (2018). The LAB:
 Linguistic Annotated Bibliography.
 
 Rinker, T. W. (2018). lexicon: Lexicon Data version 1.2.1.
-<https://github.com/trinker/lexicon/>
 
 Rinker, T. W. (2021). sentimentr: Calculate Text Polarity Sentiment
-version 2.9.0. <https://github.com/trinker/sentimentr/>
+version 2.9.0.
 
 Yeomans, M., Kantor, A., & Tingley, D. (2019). The politeness Package:
 Detecting Politeness in Natural Language. *The R Journal*, 10(2), 489.

@@ -6,7 +6,7 @@ individuals introduce or describe themselves, their audiences
 automatically make judgments about their warmth and competence. In the
 *warmthcompetence* package, we provide tools that estimate warmth and
 competence social perceptions from natural self-presentational language.
-We use pre-trained enet regression models to provide numerical
+We use trained elastic net regression models to provide numerical
 representations of warmth and competence perceptions.
 
 ## Citation
@@ -14,6 +14,7 @@ representations of warmth and competence perceptions.
 To generate a bibliographic reference for the package, run:
 
 ``` r
+
 citation("warmthcompetence")
 ```
 
@@ -23,12 +24,14 @@ To install *warmthcompetence* from CRAN, use the following code in your
 R session:
 
 ``` r
+
 install.packages("warmthcompetence")
 ```
 
 To install the development version from GitHub, use the following code:
 
 ``` r
+
 devtools::install_github("bushraguenoun/warmthcompetence")
 ```
 
@@ -45,6 +48,7 @@ and
 These functions can be used as described below:
 
 ``` r
+
 competence_scores <- competence(text_vector, ID_vector, metrics = "scores")
 
 warmth_scores <- warmth(text_vector, ID_vector, metrics = "scores")

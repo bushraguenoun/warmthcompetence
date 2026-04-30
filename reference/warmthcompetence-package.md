@@ -1,7 +1,7 @@
 # warmthcompetence: Warmth and Competence Detectors
 
 Detects perceptions of warmth and competence in American English
-self-presentational language. Using pre-trained enet regression models,
+self-presentation language. Using trained elastic net regression models,
 this package provides a numerical representation of warmth and
 competence perceptions.
 
@@ -10,6 +10,8 @@ competence perceptions.
 Useful links:
 
 - <https://github.com/bushraguenoun/warmthcompetence>
+
+- <https://bushraguenoun.github.io/warmthcompetence/>
 
 - Report bugs at
   <https://github.com/bushraguenoun/warmthcompetence/issues>
