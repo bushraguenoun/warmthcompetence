@@ -6,12 +6,13 @@
 \alias{warmthcompetence-package}
 \title{warmthcompetence: Warmth and Competence Detectors}
 \description{
-Detects perceptions of warmth and competence in American English self-presentational language. Using pre-trained enet regression models, this package provides a numerical representation of warmth and competence perceptions.
+Detects perceptions of warmth and competence in American English self-presentation language. Using trained elastic net regression models, this package provides a numerical representation of warmth and competence perceptions.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/bushraguenoun/warmthcompetence}
+  \item \url{https://bushraguenoun.github.io/warmthcompetence/}
   \item Report bugs at \url{https://github.com/bushraguenoun/warmthcompetence/issues}
 }
 

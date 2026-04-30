@@ -15,11 +15,11 @@
 #' @references
 #' Benoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., & Matsuo, A. (2018). quanteda: An R package for the quantitative analysis of textual data. *Journal of Open Source Software*, 3(30), 774. \doi{10.21105/joss.00774}
 #'
-#' Buchanan, E. M., Valentine, K. D., & Maxwell, N. (2018). The LAB: Linguistic Annotated Bibliography. \doi{0.31219/osf.io/h3bwx}
+#' Buchanan, E. M., Valentine, K. D., & Maxwell, N. (2018). The LAB: Linguistic Annotated Bibliography.
 #'
-#' Rinker, T. W. (2018). lexicon: Lexicon Data version 1.2.1. \url{http://github.com/trinker/lexicon}
+#' Rinker, T. W. (2018). lexicon: Lexicon Data version 1.2.1.
 #'
-#' Rinker, T. W. (2021). sentimentr: Calculate Text Polarity Sentiment version 2.9.0. \url{http://github.com/trinker/sentimentr}
+#' Rinker, T. W. (2021). sentimentr: Calculate Text Polarity Sentiment version 2.9.0.
 #'
 #' Yeomans, M., Kantor, A., & Tingley, D. (2019). The politeness Package: Detecting Politeness in Natural Language. *The R Journal*, 10(2), 489. \doi{10.32614/RJ-2018-079}
 #'
