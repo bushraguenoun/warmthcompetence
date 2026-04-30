@@ -9,6 +9,7 @@
 ^docs$
 ^pkgdown$
 ^\.github$
+<<<<<<< HEAD
 ^CRAN-SUBMISSION$
 ^cran-comments\.md$
 ^README\.Rmd$

@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 # warmthcompetence: Warmth and Competence Detectors
 
-Warmth and competence are the two main dimensions of social perception and judgment [@cuddy2008] . When individuals introduce or describe themselves, their audiences automatically make judgments about their warmth and competence. In the *warmthcompetence* package, we provide tools that estimate warmth and competence social perceptions from natural self-presentational language. We use pre-trained enet regression models to provide numerical representations of warmth and competence perceptions.
+Warmth and competence are the two main dimensions of social perception and judgment [@cuddy2008] . When individuals introduce or describe themselves, their audiences automatically make judgments about their warmth and competence. In the *warmthcompetence* package, we provide tools that estimate warmth and competence social perceptions from natural self-presentation language. We use trained elastic net regression models to provide numerical representations of warmth and competence perceptions.
 
 ## Citing warmthcompetence
 

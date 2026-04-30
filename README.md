@@ -9,16 +9,8 @@ individuals introduce or describe themselves, their audiences
 automatically make judgments about their warmth and competence. In the
 *warmthcompetence* package, we provide tools that estimate warmth and
 competence social perceptions from natural self-presentational language.
-We use pre-trained enet regression models to provide numerical
+We use trained elastic net regression models to provide numerical
 representations of warmth and competence perceptions.
-
-## Citing warmthcompetence
-
-To generate a citation for *warmthcompetence*, please run
-
-``` r
-citation("warmthcompetence")
-```
 
 ## Citation
 
