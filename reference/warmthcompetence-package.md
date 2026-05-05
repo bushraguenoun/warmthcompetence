@@ -3,7 +3,8 @@
 Detects perceptions of warmth and competence in American English
 self-presentation language. Using trained elastic net regression models,
 this package provides a numerical representation of warmth and
-competence perceptions.
+competence perceptions. Methods are described
+here:<https://github.com/bushraguenoun/warmthcompetence/tree/master/paper>.
 
 ## See also
 

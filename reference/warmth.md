@@ -7,7 +7,8 @@ and return a warmth/competence perception score that represents how much
 warmth/competence others attribute the individual who wrote the
 self-presentational text. The function also contains a metrics argument
 that enables users to also return the raw features used to assess warmth
-and competence perceptions.
+and competence perceptions. Methods are described
+here:<https://github.com/bushraguenoun/warmthcompetence/tree/master/paper>.
 
 ## Usage
 
@@ -75,19 +76,27 @@ Detecting Politeness in Natural Language. *The R Journal*, 10(2), 489.
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
+# \donttest{
 data("example_data")
 
 warmth_scores <- warmth(example_data$bio, metrics = "all")
+#> Error in spacy_initialize(): No spaCy environment found. Use `spacy_install()` to get started.
 
 example_data$warmth_predictions <- warmth_scores$warmth_predictions
+#> Error: object 'warmth_scores' not found
 warmth_model1 <- lm(RA_warm_AVG  ~ warmth_predictions, data = example_data)
+#> Error in eval(predvars, data, env): object 'warmth_predictions' not found
 summary(warmth_model1)
+#> Error: object 'warmth_model1' not found
 
 competence_scores <- competence(example_data$bio, metrics = "all")
+#> Error in spacy_initialize(): No spaCy environment found. Use `spacy_install()` to get started.
 
 example_data$competence_predictions <- competence_scores$competence_predictions
+#> Error: object 'competence_scores' not found
 competence_model1 <- lm(RA_comp_AVG ~ competence_predictions, data = example_data)
+#> Error in eval(predvars, data, env): object 'competence_predictions' not found
 summary(competence_model1)
-} # }
+#> Error: object 'competence_model1' not found
+# }
 ```
