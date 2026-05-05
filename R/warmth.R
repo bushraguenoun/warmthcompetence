@@ -1,7 +1,7 @@
-#' Warmth/Confidence Detector
+#' Warmth/Competence Detector
 #'
 #' @description
-#' Assesses warmth and competence perceptions in self-presentational natural language. These functions each take an N-length vector of self-presentational text documents and N-length vector of document IDs and return a warmth/competence perception score that represents how much warmth/competence others attribute the individual who wrote the self-presentational text. The function also contains a metrics argument that enables users to also return the raw features used to assess warmth and competence perceptions.
+#' Assesses warmth and competence perceptions in self-presentational natural language. These functions each take an N-length vector of self-presentational text documents and N-length vector of document IDs and return a warmth/competence perception score that represents how much warmth/competence others attribute the individual who wrote the self-presentational text. The function also contains a metrics argument that enables users to also return the raw features used to assess warmth and competence perceptions. Methods are described here:<https://github.com/bushraguenoun/warmthcompetence/tree/master/paper>.
 #'
 #' @param text `character`; a vector of texts, each of which will be assessed for warmth/competence.
 #' @param ID `character`; a vector of IDs that will be used to identify the warmth/competence scores.
@@ -24,7 +24,7 @@
 #' Yeomans, M., Kantor, A., & Tingley, D. (2019). The politeness Package: Detecting Politeness in Natural Language. *The R Journal*, 10(2), 489. \doi{10.32614/RJ-2018-079}
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data("example_data")
 #'
 #' warmth_scores <- warmth(example_data$bio, metrics = "all")
