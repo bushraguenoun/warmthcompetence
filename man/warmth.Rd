@@ -20,13 +20,13 @@ warmth(text, ID = NULL, metrics = "scores")
 The default is to return a data frame with each row containing the document identifier and the warmth/competence score. Users can also customize what is returned through the \code{metrics} argument. If \code{metrics = "features"}, then a data frame of warmth/competence features will be returned where each document is represented by a row. If \code{metrics = "all"}, then both the warmth/competence scores and features will be returned in a data frame.
 }
 \description{
-Assesses warmth and competence perceptions in self-presentational natural language. These functions each take an N-length vector of self-presentational text documents and N-length vector of document IDs and return a warmth/competence perception score that represents how much warmth/competence others attribute the individual who wrote the self-presentational text. The function also contains a metrics argument that enables users to also return the raw features used to assess warmth and competence perceptions.
+Assesses warmth and competence perceptions in self-presentational natural language. These functions each take an N-length vector of self-presentational text documents and N-length vector of document IDs and return a warmth/competence perception score that represents how much warmth/competence others attribute the individual who wrote the self-presentational text. The function also contains a metrics argument that enables users to also return the raw features used to assess warmth and competence perceptions. Methods are described here:\url{https://github.com/bushraguenoun/warmthcompetence/tree/master/paper}.
 }
 \details{
 Some features depend on Spacyr which must be installed separately in Python.
 }
 \examples{
-\dontrun{
+\donttest{
 data("example_data")
 
 warmth_scores <- warmth(example_data$bio, metrics = "all")

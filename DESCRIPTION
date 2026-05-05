@@ -1,7 +1,7 @@
 Package: warmthcompetence
 Type: Package
 Title: Warmth and Competence Detectors
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: c(
     person("Bushra", "Guenoun", email = "bushraguenoun@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0975-1620")),

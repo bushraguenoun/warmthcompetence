@@ -6,7 +6,7 @@
 \alias{warmthcompetence-package}
 \title{warmthcompetence: Warmth and Competence Detectors}
 \description{
-Detects perceptions of warmth and competence in American English self-presentation language. Using trained elastic net regression models, this package provides a numerical representation of warmth and competence perceptions.
+Detects perceptions of warmth and competence in American English self-presentation language. Using trained elastic net regression models, this package provides a numerical representation of warmth and competence perceptions. Methods are described here:\url{https://github.com/bushraguenoun/warmthcompetence/tree/master/paper}.
 }
 \seealso{
 Useful links:
