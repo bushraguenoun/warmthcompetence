@@ -3,20 +3,23 @@
 
 # warmthcompetence: Warmth and Competence Detectors
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/warmthcompetence)](https://CRAN.R-project.org/package=warmthcompetence)
+
 Warmth and competence are the two main dimensions of social perception
 and judgment ([Cuddy, Fiske, and Glick 2008](#ref-cuddy2008)) . When
 individuals introduce or describe themselves, their audiences
 automatically make judgments about their warmth and competence. In the
 *warmthcompetence* package, we provide tools that estimate warmth and
-competence social perceptions from natural self-presentational language.
+competence social perceptions from natural self-presentation language.
 We use trained elastic net regression models to provide numerical
 representations of warmth and competence perceptions.
 
-## Citation
+## Citing warmthcompetence
 
-To generate a bibliographic reference for the package, run:
+To generate a citation for *warmthcompetence*, please run
 
-```r
+``` r
 citation("warmthcompetence")
 ```
 
