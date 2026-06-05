@@ -1,7 +1,9 @@
 # warmthcompetence: Warmth and Competence Detectors
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/warmthcompetence)](https://CRAN.R-project.org/package=warmthcompetence)
+status](https://www.r-pkg.org/badges/version/warmthcompetence)](https://cran.r-project.org/package=warmthcompetence)
+[![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/warmthcompetence)](https://cran.r-project.org/package=warmthcompetence)
 
 Warmth and competence are the two main dimensions of social perception
 and judgment ([Cuddy, Fiske, and Glick 2008](#ref-cuddy2008)) . When
